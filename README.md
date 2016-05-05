@@ -14,7 +14,7 @@ Usage
 ```html
     <link rel="stylesheet" href="../bower_components/slick-carousel/slick/slick.css">
     <link rel="stylesheet" href="../bower_components/slick-carousel/slick/slick-theme.css">
-    
+
     <script src="../bower_components/jquery/jquery.js"></script>
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/slick-carousel/slick/slick.js"></script>
@@ -35,8 +35,8 @@ as either a `<div>` attribute or a `<slick>` element.
     <slick infinite=true slides-to-show=3 slides-to-scroll=3>
     ...
     </slick>
-    
-    <slick 
+
+    <slick
         settings="slickConfig" ng-if="numberLoaded">
     </slick>
 ```
@@ -51,7 +51,7 @@ as either a `<div>` attribute or a `<slick>` element.
 $scope.slickConfig = {
     enabled: true,
     autoplay: true,
-    draggable: false,  
+    draggable: false,
     autoplaySpeed: 3000,
     method: {},
     event: {
@@ -79,30 +79,6 @@ Slick can be easily switched on and off by using `enabled` settings flag.
     <button ng-click="toggleSlick()">Toggle</button>
 ```
 
-
-### Method ###
-1. All the functions in the plugin are exposed through a control
-attribute.
-2. To utilize this architecture, and have two-way data-binding,
-define an empty control handle on scope:
-```js
-    $scope.slickConfig = {
-        method: {}
-    }
-```
-3. Pass it as the value to control attribute. Now, you can call any plugin methods
-as shown in the example.
-
-```html
-<button ng-click="slickConfig.method.slickGoTo(2)">slickGoTo(2)</button>
-<button ng-click="slickConfig.method.slickPrev()">slickPrev()</button>
-<button ng-click="slickConfig.method.slickNext()">slickNext()</button>
-<button ng-click='slickConfig.method.slickAdd("<div>New</div>")'>slickAdd()</button>
-<button ng-click='slickConfig.method.slickRemove(3)'>slickRemove(3)</button>
-<button ng-click='slickConfig.method.slickPlay()'>slickPlay()</button>
-<button ng-click='slickConfig.method.slickPause()'>slickPause()</button>
-```
-
 ### Slide data ###
 For change slide content, you have to set `ng-if` to destroy and init it
 
@@ -112,9 +88,9 @@ For change slide content, you have to set `ng-if` to destroy and init it
     $scope.numberLoaded = true;
     $scope.numberUpdate = function(){
         $scope.numberLoaded = false; // disable slick
-        
+
         //number update
-        
+
         $scope.numberLoaded = true; // enable slick
     };
 ```
@@ -123,7 +99,7 @@ For change slide content, you have to set `ng-if` to destroy and init it
     <script type="text/ng-template" id="tpl.html">
         <h3>{{ i.label }}</h3>
     </script>
-    
+
     <slick ng-if="numberLoaded">
         <div ng-repeat="i in number">
             <div class="" ng-include="'tpl.html'"></div>
@@ -141,7 +117,7 @@ For change slide content, you have to set `ng-if` to destroy and init it
 
 ### FAQ ###
 Q: After change data, could i keep the current slide index?
-A: For this directive, this will destroy and init slick when updating data. You could get current index by event. 
+A: For this directive, this will destroy and init slick when updating data. You could get current index by event.
 example:
 ```js
     $scope.currentIndex = 0;
